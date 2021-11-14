@@ -1,2 +1,2 @@
-# hotel_reservation
-database for a hotel reservation system
+# Hotel Reservation System
+Database for a hotel reservation system
