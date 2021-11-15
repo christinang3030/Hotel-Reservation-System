@@ -173,16 +173,6 @@ BEGIN
 END;
 //
 
-DROP TRIGGER IF EXISTS DelFromAvail//
-delimiter //
-CREATE TRIGGER DelFromAvail
-AFTER DELETE ON Available
-FOR EACH ROW
-BEGIN
-	INSERT INTO Booked values (OLD.rID, CURRENT_DATE());
-END;
-//
-
 /* ARCHIVE PROCEDURE */
 DROP PROCEDURE IF EXISTS Archive;
 delimiter //
