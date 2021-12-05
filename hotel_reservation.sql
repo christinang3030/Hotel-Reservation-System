@@ -23,7 +23,7 @@ create table Service(rID int, serviceCode int, service text, primary key(rID),
 foreign key(rID) references Room(rID) on update cascade on delete cascade);
 
 create table Booked(rID int, cID int, PRIMARY KEY (rID), date_booked date,
-foreign key (rID) references Room (rID) on update cascade on delete cascade,
+foreign key (rID) references Room (rID) on update cascade,
 foreign key (cID) references Guest (cID) on update cascade on delete set null);
 
 create table Available(rID int, PRIMARY KEY (rID), date_available date,
