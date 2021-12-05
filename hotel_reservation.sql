@@ -70,23 +70,22 @@ insert into Room values
 ( 304, 'double', 120 ),
 ( 305, 'triple', 125 );
 
-	/* 001: special meal, 002: minibar, 004: spa */
 insert into Service values 
-(101, 002, 'minibar'),
-(102, 004, 'spa'),
-(103, 001, 'special meal'),
-(104, 004, 'spa'),
-(105, 002, 'minibar'),
-(201, 004, 'spa'),
-(202, 004, 'spa'),
-(203, 001, 'special meal'),
-(204, 001, 'special meal'),
-(205, 002, 'minibar'),
-(301, 001, 'special meal'),
-(302, 001, 'special meal'),
-(303, 002, 'minibar'),
-(304, 002, 'minibar'),
-(305, 001, 'special meal');
+(101, 3001, 'minibar'),
+(102, 3002, 'spa'),
+(103, 3003, 'special meal'),
+(104, 3004, 'spa'),
+(105, 3005, 'minibar'),
+(201, 3006, 'spa'),
+(202, 3007, 'spa'),
+(203, 3008, 'special meal'),
+(204, 3009, 'special meal'),
+(205, 3010, 'minibar'),
+(301, 3011, 'special meal'),
+(302, 3012, 'special meal'),
+(303, 3013, 'minibar'),
+(304, 3014, 'minibar'),
+(305, 3015, 'special meal');
 
 insert into Booked values
 (101, 1001, '2021-10-01'),
@@ -117,7 +116,6 @@ insert into Employee values
 ( 6, 'Suman Gundisalvus', 'Housekeeper', '555-1131' ),
 ( 7, 'Solly Ivanka', 'Security', '555-1114' );
                     
-/* Making irrelevant information since this will be active data, has no bearance on the current available or booked entries */
 insert into Transaction values
 ( 0, 1001, 101, 3, 235, '2021-10-11 10:34:09', '2021-10-11', '2021-10-14' ),
 ( 1, 1002, 102, 1, 75, '2021-11-11 22:34:09', '2021-11-11', '2021-11-12' ),
@@ -183,7 +181,6 @@ BEGIN
 END;
 //
 
-
 /* FUNCTIONAL REQUIREMENTS */
 
 /* Get list of guests in alphabetical order */
@@ -233,3 +230,6 @@ select * from Room where rID in (select rID from Service where Room.rID = Servic
 
 /* Find all available service with triple room : */
 select distinct service from Service where rID in (select rID from Room where Room.rID = Service.rID and Room.type = 'triple');
+
+/* Produce report that shows all rooms and their services */
+select * from Room left outer join Service on Room.rID = Service.rID;
